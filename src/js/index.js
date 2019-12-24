@@ -118,13 +118,13 @@ const directionManagement = (() => {
     startRotateAdd () {
       prev()
       intervalId = setInterval(() => {
-        rotate += rotateStep
+        rotate += (rotateStep * (isRevert ? -1 : 1))
       }, timeInterval)
     },
     startRotateCut () {
       prev()
       intervalId = setInterval(() => {
-        rotate -= rotateStep
+        rotate -= (rotateStep * (isRevert ? -1 : 1))
       }, timeInterval)
     },
     end () {
