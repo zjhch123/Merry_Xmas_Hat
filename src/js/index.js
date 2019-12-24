@@ -17,9 +17,11 @@ const $right = $('.J_right')
 const $dir = $('.J_dir')
 const $rotateCut = $('.J_cut_rotate')
 const $rotateAdd = $('.J_add_rotate')
+const $revert = $('.J_revert')
 
 const $modalImg = $('.J_modal_img')
 const $modal = $('.J_modal')
+const $close = $('.J_close')
 
 const ctx = $canvas[0].getContext('2d')
 
@@ -34,6 +36,7 @@ let hatSize = ~~($sizeRangeInput.val())
 let hatX = 200
 let hatY = 200
 let rotate = 0
+let isRevert = false
 
 const resetImage = () => {
   ctx.clearRect(0, 0, 1200, 1200)
@@ -55,6 +58,7 @@ const drawImage = () => {
     const hatSize = getHatSize()
     ctx.save()
     ctx.translate(hatX, hatY)
+    ctx.scale(isRevert ? -1 : 1, 1)
     ctx.rotate(rotate * Math.PI)
     ctx.drawImage(hat, 0 - hatSize / 2, 0 - hatSize / 2, hatSize, hatSize)
     ctx.restore()
@@ -193,10 +197,13 @@ const listen = () => {
   $dir.on('touchend', () => {
     directionManagement.end()
   })
+  $revert.on('click', () => {
+    isRevert = !isRevert
+  })
   $export.on('click', () => {
     downloadFile($canvas[0].toDataURL('image/png'))
   })
-  $modal.on('click', () => {
+  $close.on('click', () => {
     $modal.hide()
   })
 }

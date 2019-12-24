@@ -118,9 +118,10 @@
   right: 0;
   bottom: 0;
   display: none;
+  z-index: 10;
   .u-img {
     position: absolute;
-    top: 2.5rem;
+    top: 2rem;
     width: 6rem;
     height: 6rem;
     left: 50%;
@@ -128,11 +129,25 @@
   }
   .u-text {
     position: absolute;
-    top: 9rem;
+    top: 8.4rem;
     color: white;
     font-size: .5rem;
     left: 50%;
     transform: translateX(-50%);
     animation: float .5s linear alternate-reverse infinite;
+  }
+  .u-close {
+    position: absolute;
+    top: 9.5rem;
+    left: 50%;
+    margin-left: -2rem;
+    text-decoration: none;
+    width: 4rem;
+    height: .6rem;
+    line-height: .6rem;
+    font-size: .4rem;
+    border: 1px solid white;
+    text-align: center;
+    color: white;
   }
 }
