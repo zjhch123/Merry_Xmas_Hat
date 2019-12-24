@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "module": "es6",
+    "experimentalDecorators": true,
+    "paths": {
+      "@css/*": ["./src/css/*"],
+      "@js/*": ["./src/js/*"],
+      "@assets/*": ["./src/assets/*"]
+    },
+    "lib": [
+      "DOM",
+      "ESNext"
+    ]
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

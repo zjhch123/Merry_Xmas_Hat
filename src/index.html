@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Merry Christmas</title>
+  <meta charset="utf-8">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="yes" name="apple-touch-fullscreen">
+  <meta content="telephone=no,email=no" name="format-detection">
+  <meta name="screen-orientation" content="portrait">
+  <meta name="x5-orientation" content="portrait">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <link rel="shortcut icon" href="https://image.hduzplus.xyz/image/1572689639700.jpg">
+  <script type="text/javascript" compress="no-compress">
+    !function () {
+      function a() {
+        if (parseInt(document.documentElement.clientWidth) > 768 && top.window == window) {
+          document.documentElement.style.fontSize = 768 / 750 * 10 / 16 * 1000 + "%";
+        } else {
+          document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 * 10 / 16 * 1000 + "%";
+        }
+      }
+      var b = null;
+      window.addEventListener("resize", function () {
+        clearTimeout(b);
+        b = setTimeout(a, 300);
+      }, !1);
+      a();
+    }(window);
+  </script>
+</head>
+<body>
+  <div class="m-container">
+    <div class="m-canvas">
+      <canvas width="1200" height="1200" class="u-canvas J_canvas"></canvas>
+    </div>
+    <div class="m-actions">
+      <input type="file" class="u-file-input J_file_input">
+      <a href="javascript:;" class="u-btn J_upload">选择图片</a>
+      <a href="javascript:;" class="u-btn J_reset">重置图片</a>
+      <a href="javascript:;" class="u-btn J_hat">添加圣诞帽</a>
+      <a href="javascript:;" class="u-btn J_export">导出图片</a>
+    </div>
+    <div class="m-size J_size">
+      <span>小</span>
+      <input type="range" class="J_range" min="10" max="100" value="40">
+      <span>大</span>
+    </div>
+    <div class="m-position">
+      <div class="m-transform">
+        <div class="u-row center">
+          <a href="javascript:;" class="u-btn J_up J_dir">↑</a>
+        </div>
+        <div class="u-row">
+          <a href="javascript:;" class="u-btn J_left J_dir">←</a>
+          <a href="javascript:;" class="u-btn J_right J_dir">→</a>
+        </div>
+        <div class="u-row center">
+          <a href="javascript:;" class="u-btn J_down J_dir">↓</a>
+        </div>
+      </div>
+      <div class="m-rotate">
+        <div class="u-row">
+          <a href="javascript:;" class="u-btn J_cut_rotate J_dir">逆</a>
+          <a href="javascript:;" class="u-btn J_add_rotate J_dir">顺</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="m-modal J_modal f-hide">
+    <img class="J_modal_img u-img">
+    <span class="u-text">长按保存到相册</span>
+  </div>
+</body>
+</html>

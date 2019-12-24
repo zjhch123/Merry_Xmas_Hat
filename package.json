@@ -1,0 +1,26 @@
+{
+  "name": "xmas_hat",
+  "version": "1.0.0",
+  "description": "created by Emiya",
+  "main": "App.js",
+  "scripts": {
+    "build": "emiya-scripts build",
+    "dev": "emiya-scripts dev",
+    "eject": "emiya-scripts eject"
+  },
+  "keywords": [
+    "webpack",
+    "emiya",
+    "bootstrap",
+    "launcher"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "emiya-scripts": "^3.0.0"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "jquery-mobile": "^1.5.0-alpha.1"
+  }
+}
