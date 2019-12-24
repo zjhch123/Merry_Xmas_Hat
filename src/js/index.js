@@ -156,28 +156,15 @@ const listen = () => {
   $sizeRangeInput.on('change', () => {
     hatSize = ~~($sizeRangeInput.val())
   })
-  $sizeRangeInput.on('touchmove', () => {
+  $sizeRangeInput.on('touchmove mousemove', () => {
     hatSize = ~~($sizeRangeInput.val())
   })
-  $up.on('touchstart', () => {
-    directionManagement.startUp()
+  $dir.on('touchstart mousedown', (e) => {
+    const name = $(e.target).data('name')
+    directionManagement[`start${name}`]()
+    e.preventDefault()
   })
-  $down.on('touchstart', () => {
-    directionManagement.startDown()
-  })
-  $left.on('touchstart', () => {
-    directionManagement.startLeft()
-  })
-  $right.on('touchstart', () => {
-    directionManagement.startRight()
-  })
-  $rotateCut.on('touchstart', () => {
-    directionManagement.startRotateCut()
-  })
-  $rotateAdd.on('touchstart', () => {
-    directionManagement.startRotateAdd()
-  })
-  $dir.on('touchend', () => {
+  $dir.on('touchend mouseup', () => {
     directionManagement.end()
   })
   $revert.on('click', () => {
