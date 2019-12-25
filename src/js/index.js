@@ -140,7 +140,7 @@ const directionManagement = (() => {
 
 const downloadFile = (content) => {
   $modalImg.attr('src', content)
-  $modal.show()
+  $modal.removeClass('f-hide')
 }
 
 const showCropper = (img) => {
@@ -207,7 +207,7 @@ const listen = () => {
     downloadFile($canvas[0].toDataURL('image/png'))
   })
   $close.on('click', () => {
-    $modal.hide()
+    $modal.addClass('f-hide')
   })
   $clipSubmit.on('click', () => {
     const src = cropper.getCroppedCanvas().toDataURL('image/png')
@@ -222,23 +222,23 @@ const listen = () => {
 
 const resetButtonStatus = () => {
   if (image === null) {
-    $sizeDiv.removeClass('f-show')
+    $sizeDiv.addClass('f-hide')
     $selectFileBtn.removeClass('f-hide')
     $resetFileBtn.addClass('f-hide')
-    $addHat.hide()
-    $export.hide()
+    $addHat.addClass('f-hide')
+    $export.addClass('f-hide')
   } else {
     $resetFileBtn.removeClass('f-hide')
     $selectFileBtn.addClass('f-hide')
 
     if (hatAdded) {
-      $sizeDiv.addClass('f-show')
-      $addHat.hide()
-      $export.show()
+      $sizeDiv.removeClass('f-hide')
+      $addHat.addClass('f-hide')
+      $export.removeClass('f-hide')
     } else {
-      $sizeDiv.removeClass('f-show')
-      $addHat.show()
-      $export.hide()
+      $sizeDiv.addClass('f-hide')
+      $addHat.removeClass('f-hide')
+      $export.addClass('f-hide')
     }
   }
 }

@@ -42,6 +42,9 @@
       color: white;
       font-size: .2rem;
       margin: .12rem 0;
+      &.f-hide {
+        display: none;
+      }
     }
   }
   .m-size {
@@ -51,9 +54,9 @@
     padding-bottom: .4rem;
     align-items: center;
     justify-content: space-between;
-    display: none;
-    &.f-show {
-      display: flex;
+    display: flex;
+    &.f-hide {
+      display: none;
     }
     span {
       font-size: .3rem;
@@ -117,8 +120,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  display: none;
   z-index: 10;
+  &.f-hide {
+    display: none;
+  }
   .u-img {
     position: absolute;
     top: 2rem;
