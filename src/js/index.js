@@ -95,40 +95,45 @@ const directionManagement = (() => {
     clearInterval(intervalId)
   }
 
+  const setImmediateInterval = (func, timestep) => {
+    func()
+    return setInterval(func, timestep)
+  }
+
   return {
     startUp () {
       prev()
-      intervalId = setInterval(() => {
+      intervalId = setImmediateInterval(() => {
         hatY -= step
       }, timeInterval)
     },
     startDown () {
       prev()
-      intervalId = setInterval(() => {
+      intervalId = setImmediateInterval(() => {
         hatY += step
       }, timeInterval)
     },
     startLeft () {
       prev()
-      intervalId = setInterval(() => {
+      intervalId = setImmediateInterval(() => {
         hatX -= step
       }, timeInterval)
     },
     startRight () {
       prev()
-      intervalId = setInterval(() => {
+      intervalId = setImmediateInterval(() => {
         hatX += step
       }, timeInterval)
     },
     startRotateAdd () {
       prev()
-      intervalId = setInterval(() => {
+      intervalId = setImmediateInterval(() => {
         rotate += (rotateStep * (isRevert ? -1 : 1))
       }, timeInterval)
     },
     startRotateCut () {
       prev()
-      intervalId = setInterval(() => {
+      intervalId = setImmediateInterval(() => {
         rotate -= (rotateStep * (isRevert ? -1 : 1))
       }, timeInterval)
     },
