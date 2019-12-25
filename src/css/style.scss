@@ -151,3 +151,40 @@
     color: white;
   }
 }
+
+.m-clip-modal {
+  background: rgba(0,0,0, .6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  &.f-hide {
+    display: none;
+  }
+  .u-text {
+    color: white;
+    font-size: .4rem;
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: .5rem;
+  }
+  .m-clip {
+    margin: auto;
+    width: 7rem;
+    height: 8rem;
+  }
+  .u-close {
+    display: block;
+    margin: .7rem auto 0;
+    text-decoration: none;
+    width: 4rem;
+    height: .6rem;
+    line-height: .6rem;
+    font-size: .4rem;
+    border: 1px solid white;
+    text-align: center;
+    color: white;
+  }
+}

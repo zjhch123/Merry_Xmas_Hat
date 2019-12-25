@@ -1,4 +1,7 @@
 import $ from 'jquery'
+import Cropper from 'cropperjs'
+
+import 'cropperjs/dist/cropper.min.css'
 
 const $canvas = $('canvas')
 const $fileInput = $('.J_file_input')
@@ -10,18 +13,16 @@ const $export = $('.J_export')
 const $sizeDiv = $('.J_size')
 const $sizeRangeInput = $('.J_range')
 
-const $up = $('.J_up')
-const $down = $('.J_down')
-const $left = $('.J_left')
-const $right = $('.J_right')
 const $dir = $('.J_dir')
-const $rotateCut = $('.J_cut_rotate')
-const $rotateAdd = $('.J_add_rotate')
 const $revert = $('.J_revert')
 
 const $modalImg = $('.J_modal_img')
 const $modal = $('.J_modal')
 const $close = $('.J_close')
+
+const $clip = $('.J_clip')
+const $clipModal = $('.J_clip_modal')
+const $clipSubmit = $('.J_clip_ok')
 
 const ctx = $canvas[0].getContext('2d')
 
@@ -37,6 +38,8 @@ let hatX = 200
 let hatY = 200
 let rotate = 0
 let isRevert = false
+
+let cropper = null
 
 const resetImage = () => {
   ctx.clearRect(0, 0, 1200, 1200)
@@ -138,16 +141,43 @@ const downloadFile = (content) => {
   $modal.show()
 }
 
+const showCropper = (img) => {
+  $clip.append(img)
+  $clipModal.removeClass('f-hide')
+  cropper = new Cropper($('.J_clip img')[0], {
+    aspectRatio: 1,
+    viewMode: 1,
+    autoCropArea: 1,
+  })
+}
+
+const hideCropper = () => {
+  cropper.destroy()
+  cropper = null
+  $clipModal.addClass('f-hide')
+  $clip.empty()
+}
+
 const listen = () => {
   $selectFileBtn.on('click', () => {
     $fileInput.click()
   })
   $resetFileBtn.on('click', () => {
     resetImage()
+    $fileInput.val(null)
   })
   $fileInput.on('change', () => {
+    if (!$fileInput[0].files[0]) {
+      return
+    }
     resetImage()
-    readImage($fileInput[0].files[0]).then(img => { image = img })
+    readImage($fileInput[0].files[0]).then(img => {
+      if (img.width !== img.height) {
+        showCropper(img)
+      } else {
+        image = img
+      }
+    })
   })
   $addHat.on('click', () => {
     if (hatAdded || image === null) return
@@ -175,6 +205,15 @@ const listen = () => {
   })
   $close.on('click', () => {
     $modal.hide()
+  })
+  $clipSubmit.on('click', () => {
+    const src = cropper.getCroppedCanvas().toDataURL('image/png')
+    const img = new Image()
+    img.onload = () => {
+      image = img
+      hideCropper()
+    }
+    img.src = src
   })
 }
 
