@@ -29,6 +29,8 @@ const ctx = $canvas[0].getContext('2d')
 let image = null
 
 let hat = null
+const redHat = new Image()
+const greenHat = new Image()
 let hatAdded = false
 
 const hatOriginalSize = 512
@@ -181,6 +183,7 @@ const listen = () => {
   })
   $addHat.on('click', () => {
     if (hatAdded || image === null) return
+    hat = Math.random() > 0.3 ? redHat : greenHat
     hatAdded = true
   })
   $sizeRangeInput.on('change', () => {
@@ -247,14 +250,11 @@ const loopBinding = () => {
 }
 
 const initialHat = () => {
-  const hatImageSrc = require('../assets/images/hat.png')
-  const hatImage = new Image()
+  const redHatImageSrc = require('../assets/images/hat.png')
+  const greenHatImageSrc = require('../assets/images/hat2.png')
 
-  hatImage.onload = () => {
-    hat = hatImage
-  }
-
-  hatImage.src = hatImageSrc
+  redHat.src = redHatImageSrc
+  greenHat.src = greenHatImageSrc
 }
 
 const start = () => {
