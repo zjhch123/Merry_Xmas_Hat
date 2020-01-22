@@ -156,6 +156,7 @@ const showCropper = (img) => {
     aspectRatio: 1,
     viewMode: 1,
     autoCropArea: 1,
+    movable: false,
   })
 }
 
