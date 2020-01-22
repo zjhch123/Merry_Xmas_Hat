@@ -157,6 +157,10 @@ const showCropper = (img) => {
     viewMode: 1,
     autoCropArea: 1,
     movable: false,
+    scalable: false,
+    zoomable: false,
+    minCropBoxWidth: 50,
+    toggleDragModeOnDblclick: false,
   })
 }
 
