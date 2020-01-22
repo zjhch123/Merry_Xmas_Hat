@@ -4,6 +4,7 @@ import Cropper from 'cropperjs'
 import 'cropperjs/dist/cropper.min.css'
 
 const $canvas = $('canvas')
+const $actions = $('.J_actions')
 const $fileInput = $('.J_file_input')
 const $selectFileBtn = $('.J_upload')
 const $resetFileBtn = $('.J_reset')
@@ -12,6 +13,9 @@ const $export = $('.J_export')
 
 const $sizeDiv = $('.J_size')
 const $sizeRangeInput = $('.J_range')
+
+const $speedDiv = $('.J_speed')
+const $speedRangeInput = $('.J_speed_range')
 
 const $dir = $('.J_dir')
 const $revert = $('.J_revert')
@@ -86,10 +90,13 @@ const readImage = (file) => new window.Promise(res => {
 })
 
 const directionManagement = (() => {
+  const originalStep = 30
+  const originalRotateStep = 0.1
+
   let intervalId = null
 
-  const step = 15
-  const rotateStep = 0.05
+  let step = originalStep * (~~$speedRangeInput.val()) / 100
+  let rotateStep = originalRotateStep * (~~$speedRangeInput.val()) / 100
   const timeInterval = 60
 
   const prev = () => {
@@ -102,6 +109,10 @@ const directionManagement = (() => {
   }
 
   return {
+    setStep (num) {
+      step = originalStep * num / 100
+      rotateStep = originalRotateStep * num / 100
+    },
     startUp () {
       prev()
       intervalId = setImmediateInterval(() => {
@@ -203,6 +214,12 @@ const listen = () => {
   $sizeRangeInput.on('touchmove mousemove', () => {
     hatSize = ~~($sizeRangeInput.val())
   })
+  $speedRangeInput.on('change', () => {
+    directionManagement.setStep($speedRangeInput.val())
+  })
+  $speedRangeInput.on('touchmove mousemove', () => {
+    directionManagement.setStep($speedRangeInput.val())
+  })
   $dir.on('touchstart mousedown', (e) => {
     const name = $(e.target).data('name')
     directionManagement[`start${name}`]()
@@ -234,22 +251,28 @@ const listen = () => {
 const resetButtonStatus = () => {
   if (image === null) {
     $sizeDiv.addClass('f-hide')
+    $speedDiv.addClass('f-hide')
     $selectFileBtn.removeClass('f-hide')
     $resetFileBtn.addClass('f-hide')
     $addHat.addClass('f-hide')
     $export.addClass('f-hide')
+    $actions.removeClass('f-no-padding')
   } else {
     $resetFileBtn.removeClass('f-hide')
     $selectFileBtn.addClass('f-hide')
 
     if (hatAdded) {
       $sizeDiv.removeClass('f-hide')
+      $speedDiv.removeClass('f-hide')
       $addHat.addClass('f-hide')
       $export.removeClass('f-hide')
+      $actions.addClass('f-no-padding')
     } else {
       $sizeDiv.addClass('f-hide')
+      $speedDiv.addClass('f-hide')
       $addHat.removeClass('f-hide')
       $export.addClass('f-hide')
+      $actions.removeClass('f-no-padding')
     }
   }
 }

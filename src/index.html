@@ -33,17 +33,28 @@
     <div class="m-canvas">
       <canvas width="1200" height="1200" class="u-canvas J_canvas"></canvas>
     </div>
-    <div class="m-actions">
+    <div class="m-actions J_actions">
       <input type="file" class="u-file-input J_file_input">
       <a href="javascript:;" class="u-btn J_upload">选择图片</a>
-      <a href="javascript:;" class="u-btn J_reset f-hide">重置图片</a>
+      <a href="javascript:;" class="u-btn u-reset J_reset f-hide">重置</a>
       <a href="javascript:;" class="u-btn J_hat f-hide">戴上口罩！</a>
-      <a href="javascript:;" class="u-btn J_export f-hide">导出图片</a>
+      <a href="javascript:;" class="u-btn u-export J_export f-hide">保存!</a>
     </div>
-    <div class="m-size J_size f-hide">
-      <span>小</span>
-      <input type="range" class="J_range" min="10" max="100" value="40">
-      <span>大</span>
+    <div class="m-size-container J_size f-hide">
+      <span class="u-size-text">大小</span>
+      <div class="m-size J_size f-hide">
+        <span>小</span>
+        <input type="range" class="J_range" min="10" max="100" value="40">
+        <span>大</span>
+      </div>
+    </div>
+    <div class="m-speed-container J_speed f-hide">
+      <span class="u-speed-text">灵敏度</span>
+      <div class="m-speed">
+        <span>低</span>
+        <input type="range" class="J_speed_range" min="5" max="100" value="50">
+        <span>高</span>
+      </div>
     </div>
     <div class="m-position">
       <div class="m-transform">
